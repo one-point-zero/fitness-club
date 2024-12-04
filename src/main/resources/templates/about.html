@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Об авторе</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e9ecef;
+            margin: 0;
+            padding: 0;
+        }
+        .custom-navbar {
+            max-width: 80%;
+            margin: 0 auto;
+            font-size: 1.25rem;
+        }
+        .content-container {
+            background-color: #ffffff;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .content-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #333;
+        }
+        .content-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
+    <div class="container-fluid">
+        <a class="nav-link" aria-current="page" href="/">Домашняя страница</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/info">Расписание занятий</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/trainers">Тренеры</a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item">
+                    <a class="nav-link" href="/clients">Клиенты</a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item">
+                    <a class="nav-link" href="/bookings">Записи на занятия</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="content-container mt-5">
+    <div class="content-title">Об авторе</div>
+    <div class="content-text">
+        <p>
+            Работу выполнил: Шаповалов Виталий Александрович
+        </p>
+        <p>
+            Группа: ДПИ22-2
+        </p>
+        <p>
+            Email: 220699@edu.fa.ru
+        </p>
+        <p>
+            Это моё первое Spring Boot приложение. Язык Java, на котором написана данная программа, я начал изучать несколько месяцев назад.
+            Системой управления базами данных, с которой я работал больше всего, является PostgreSQL. В данной программе используется другая СУБД - MySQL,
+            её я изучаю несколько месяцев.
+        </p>
+        <p>
+            Дата начала работы над проектом: 28 октября 2024 года
+        </p>
+        <p>
+            Дата завершения работы над проектом: 4 декабря 2024 года
+        </p>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
